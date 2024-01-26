@@ -409,3 +409,6 @@ FodyWeavers.xsd
 /.vs/slnx.sqlite
 /Temp
 /Logs/shadercompiler-UnityShaderCompiler.exe0.log
+*.log
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
+*.log
