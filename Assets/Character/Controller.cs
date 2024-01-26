@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
     private float yMin;
     private float yMax;
 
-    private int donut;
+    private int donut = 0;
 
 
     public void AddDonut()
@@ -39,6 +39,11 @@ public class Controller : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public int GetDonutsCount()
+    {
+        return donut;
     }
 
     // Start is called before the first frame update
