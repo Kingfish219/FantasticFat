@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4450459270597093915}
   - component: {fileID: 9052282610495441622}
   - component: {fileID: -2551452150111704369}
+  - component: {fileID: -1679417725934104300}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -210,3 +211,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoopPrefab: {fileID: 4907071147041243422, guid: af5f34a203bfe3c49a51d44791688441, type: 3}
+--- !u!114 &-1679417725934104300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935412094489119123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c5d682164e711479a7158ee2dc6bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
