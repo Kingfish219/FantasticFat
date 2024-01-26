@@ -5,6 +5,7 @@ using UnityEngine;
 public class PoopChecker : MonoBehaviour
 {
     private AiMover mover;
+    [SerializeField] SpriteRenderer sp;
     private void Start()
     {
         mover = GetComponent<AiMover>();
@@ -15,14 +16,16 @@ public class PoopChecker : MonoBehaviour
         if (collision.CompareTag("poop"))
         {
             mover.friction *= 50;
-            StartCoroutine(RemoveTimer(collision.gameObject));
+            Destroy(collision.gameObject);
+            StartCoroutine(RemoveTimer());
+            sp.color = Color.green;
         }
     }
 
-    IEnumerator RemoveTimer(GameObject g)
+    IEnumerator RemoveTimer()
     {
         yield return new WaitForSeconds(1.0f);
         mover.friction /= 50;
-        Destroy(g);
+        sp.color = Color.white;
     }
 }

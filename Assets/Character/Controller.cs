@@ -30,6 +30,7 @@ public class Controller : MonoBehaviour
                 transform.localScale *= 1.05f;
                 break;
             case 3:
+                sprite.color = Color.green;
                 speed *= 0.5f;
                 transform.localScale *= 1.2f;
                 break;
@@ -61,6 +62,7 @@ public class Controller : MonoBehaviour
         speed = base_speed;
         transform.localScale = Vector2.one;
         donut = 0;
+        sprite.color = Color.white;
     }
 
     private void Run()
