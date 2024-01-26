@@ -12,7 +12,7 @@ public class PoopHandler : MonoBehaviour
             if (true)//check if has enugh cake
             {
                 Instantiate(PoopPrefab, transform.position, Quaternion.identity);
-                GetComponent<Controller>().ResetSpeed();
+                GetComponent<Controller>().ResetFat();
             }
         }
     }

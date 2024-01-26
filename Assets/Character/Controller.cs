@@ -55,9 +55,11 @@ public class Controller : MonoBehaviour
         Run();
     }
 
-    public void ResetSpeed()
+    public void ResetFat()
     {
         speed = base_speed;
+        transform.localScale = Vector2.one;
+        donut = 0;
     }
 
     private void Run()
