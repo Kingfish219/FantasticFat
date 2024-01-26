@@ -15,7 +15,7 @@ public class PoopHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (controller.GetDonutsCount() > 2)
+            if (controller.GetDonutsCount() > 3)
             {
                 Instantiate(PoopPrefab, transform.position, Quaternion.identity);
                 GetComponent<Controller>().ResetFat();

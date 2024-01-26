@@ -4,6 +4,7 @@ public class Controller : MonoBehaviour
 {
     [SerializeField] 
     public float speed = 2f;
+    public float friction = 1f;
     public float base_speed;
     [SerializeField] 
     private float padding = 0.2f;
@@ -11,10 +12,6 @@ public class Controller : MonoBehaviour
     private SpriteRenderer sprite;
 
     private Rigidbody2D rb;
-    private float xMin;
-    private float xMax;
-    private float yMin;
-    private float yMax;
 
     private int donut = 0;
 
@@ -49,13 +46,12 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetUpMoveBoundaries();
         rb = GetComponent<Rigidbody2D>();
         base_speed = speed;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Run();
     }
@@ -70,30 +66,19 @@ public class Controller : MonoBehaviour
     private void Run()
     {
         //transform.position += Vector3.right * speed * Time.deltaTime;
+        Vector2 velocity;
+        velocity.x = Input.GetAxis("Horizontal") * speed;
+        velocity.y = Input.GetAxis("Vertical") * speed;
 
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-
-        if (deltaX > 0)
+        if (velocity.x > 0)
         {
             sprite.flipX = false;
         }
-        else if (deltaX < 0)
+        else if (velocity.y < 0)
         {
             sprite.flipX = true;
         }
-
-        var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
-        transform.position = new Vector2(newXPos, newYPos);
-    }
-
-    private void SetUpMoveBoundaries()
-    {
-        Camera gameCamera = Camera.main;
-        xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
-        yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+        rb.AddForce(velocity);
+        rb.AddForce(-rb.velocity * friction);
     }
 }

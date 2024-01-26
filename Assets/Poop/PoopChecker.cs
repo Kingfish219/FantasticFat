@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PoopChecker : MonoBehaviour
 {
-    private Pathfinding.AILerp mover;
+    private AiMover mover;
     private void Start()
     {
-        mover = GetComponent<Pathfinding.AILerp>();
+        mover = GetComponent<AiMover>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Entred");
         if (collision.CompareTag("poop"))
         {
-            mover.speed *= 0.1f;
+            mover.friction *= 50;
             StartCoroutine(RemoveTimer(collision.gameObject));
         }
     }
@@ -23,7 +22,7 @@ public class PoopChecker : MonoBehaviour
     IEnumerator RemoveTimer(GameObject g)
     {
         yield return new WaitForSeconds(1.0f);
-        mover.speed *= 10;
+        mover.friction /= 50;
         Destroy(g);
     }
 }
